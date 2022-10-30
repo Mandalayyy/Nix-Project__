@@ -4,8 +4,9 @@
         "es2021": true
     },
     "extends": [
-        "eslint:recommended",
         "plugin:react/recommended",
+        "eslint:recommended",
+        "plugin:json/recommended",
         "plugin:@typescript-eslint/recommended"
     ],
     "overrides": [

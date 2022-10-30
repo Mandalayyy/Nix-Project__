@@ -1,5 +1,6 @@
-import { cocktailsResponse } from "./models";
-const baseUrl = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=';
+import { cocktailsResponse} from "./models";
+const baseUrl = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+const cocktailUrl = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
 
 export interface APIResponse<T> {
     success : boolean;
@@ -8,12 +9,13 @@ export interface APIResponse<T> {
 }
 
 export interface APIRequest {
-    search: string;
+    path: string;
 }
 
-export const perfomRequest = async ({search}: APIRequest): Promise<APIResponse<cocktailsResponse>> => {
+export const perfomRequest = async ({path}: APIRequest): Promise<APIResponse<cocktailsResponse>> => {
   try{
-    const response = await fetch([baseUrl, search].join(''));
+    const response = await fetch(path);
+    console.log('search', path);
     if(response.ok){
       const responseJson = await response.json();
       console.log(responseJson, 'response');
@@ -30,7 +32,14 @@ export const perfomRequest = async ({search}: APIRequest): Promise<APIResponse<c
   
 export const searchCocktails = async (queryString: string): Promise<APIResponse<cocktailsResponse>> => {
   const response = await perfomRequest ({
-    search: queryString,
+    path: [baseUrl,queryString].join(''),
+  });
+  return response;
+};
+
+export const searchCocktailIngridient = async (queryString: string): Promise<APIResponse<cocktailsResponse>> => {
+  const response = await perfomRequest ({
+    path: [cocktailUrl,queryString].join(''),
   });
   return response;
 };
