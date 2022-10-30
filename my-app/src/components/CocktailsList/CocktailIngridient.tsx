@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import {  useSelector } from 'react-redux';
 import { useNavigate} from "react-router-dom";
 import { selectCocktailsIngridientData } from '../../rdx/selectors';
-import {getLocalized} from '../../services/localized'
+import {getLocalized} from '../../services/localized';
 
 
 export const CocktailIngridient = () => {
@@ -10,7 +10,7 @@ export const CocktailIngridient = () => {
   const navigate = useNavigate();
   const goHome = useCallback(() => {
     navigate('/');
-  },[]);
+  },[navigate]);
   return(
     <div className='dark:bg-[#121212] h-screen dark:text-white'>
       <div className='flex flex-col items-center '>

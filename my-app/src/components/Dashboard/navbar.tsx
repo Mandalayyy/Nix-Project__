@@ -19,7 +19,7 @@ export const NavBar = () => {
   },[setSearchParams]); 
 
   const goProfile = useCallback(() => {
-    navigate('/profile')
+    navigate('/profile');
   },[navigate]);
  
   const goHome = useCallback(() => {
@@ -38,12 +38,12 @@ export const NavBar = () => {
     }else{
       setMenu(true);
     }
-  },[menu, setMenu])
+  },[menu, setMenu]);
 
   const logout = useCallback(() => {
     localStorage.setItem('login', JSON.stringify('false'));
     window.location.reload();
-  },[])
+  },[]);
 
 
   const changeLocalize = useCallback(() => {

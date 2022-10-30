@@ -1,5 +1,5 @@
-import React, {useState, useCallback, useEffect} from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import React, {useState, useCallback} from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getLocalized } from '../../services/localized';
 
 
@@ -13,6 +13,7 @@ export const LoginPage = () => {
   const storageLogin = localStorage.getItem('login') || 'false';
   const stEmail = localStorage.getItem('email') || '';
   const stPassword = localStorage.getItem('password') || '';
+
   const setData = useCallback(() => {
     if(email != JSON.parse(stEmail)  || password !=JSON.parse(stPassword) ){
       alert('Error');
@@ -23,7 +24,7 @@ export const LoginPage = () => {
     if(storageLogin && login){
       navigate('/');
     }
-  },[password, email,setLogin, login]);
+  },[password, email, login]);
   return(
     <div className='flex justify-center h-screen items-center  dark:bg-[#121212]'>
       <div className='flex justify-center  rounded-md h-[400px] w-[400px] shadow-md bg-slate-100  dark:bg-[#1e1e1e] '>
@@ -48,7 +49,7 @@ export const LoginPage = () => {
             </div>
           </div>
           <button onClick={setData} type="submit" className="px-3 py-1 bg-blue-500  rounded-lg uppercase">
-                {getLocalized('login')}
+            {getLocalized('login')}
           </button>
         </form>
       </div>

@@ -16,7 +16,7 @@ export const CocktailsListPage = () => {
   const navigate = useNavigate();
   const isListLoading = useSelector(selectIsDataLoading);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [login,setLogin] = useState(localStorage.getItem('login')|| 'false')
+  const [login, setLogin] = useState(localStorage.getItem('login')|| 'false');
   
   const dispatch = useAppDispatch();
   const searchValue = searchParams.get('sort');
@@ -25,12 +25,12 @@ export const CocktailsListPage = () => {
     if(login != 'true'){
       navigate('/register');
     }
-  }, [dispatch, searchValue, login, setLogin]);
+  }, [dispatch, searchValue, login]);
 
   if(!data){
     return(
       <Typography  variant="h3" component="h3">
-      {getLocalized('noCocktails')}
+        {getLocalized('noCocktails')}
       </Typography>
     );
   }

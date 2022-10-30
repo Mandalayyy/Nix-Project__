@@ -24,7 +24,7 @@ export const RegisterPage = () => {
   },[name, phone, password, email]);
   const Loging = useCallback(() => {
     navigate('/login');
-  },[]);
+  },[navigate]);
   return(
     <div className='flex justify-center h-screen items-center  dark:bg-[#121212]'>
       <div className='flex justify-center  rounded-md h-[600px] w-[600px] shadow-md bg-slate-100  dark:bg-[#1e1e1e] ' >

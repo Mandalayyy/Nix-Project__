@@ -81,4 +81,4 @@ export const ProfilePage = () => {
       </div>
     </div>
   );
-}
+};

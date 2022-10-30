@@ -1,17 +1,8 @@
 import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import { cocktailsActions} from "../../rdx/actions";
 import { cocktailsSearchResponse } from '../../services/models';
-import './cocktails.css';
-import Button from '@mui/material/Button';
-import { ThunkDispatch } from "@reduxjs/toolkit";
-import { CocktailsState } from "../../rdx/reducer";
 import {fetchSearchCocktailsIgridient} from '../../rdx/thunk';
 import { useNavigate } from "react-router-dom";
 import {useAppDispatch} from '../../rdx/hooks';
-import NightlightRoundIcon from '@mui/icons-material/NightlightRound';
-import WbSunnyIcon from '@mui/icons-material/WbSunny';
-import { orange, yellow } from '@mui/material/colors';
 import { getLocalized } from '../../services/localized';
 
 interface CocktailItemPageProps {
