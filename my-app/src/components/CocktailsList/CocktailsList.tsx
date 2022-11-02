@@ -1,10 +1,10 @@
 import React,{useEffect, useState} from "react";
 import {  useSelector } from "react-redux";
 import { fetchSearchCocktails } from "../../rdx/thunk";
-import { selectCocktailsData } from "../../rdx/selectors";
+import { selectCocktailsData } from "../../rdx/Cocktails/selectors";
 import { CocktailItemPage } from "./CocktailsItem";
 import { CircularProgress, Typography} from '@mui/material';
-import { selectIsDataLoading } from "../../rdx/selectors";
+import { selectIsDataLoading } from "../../rdx/Cocktails/selectors";
 
 import './cocktails.css';
 import { useNavigate, useSearchParams } from "react-router-dom";

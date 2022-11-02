@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import {  useSelector } from 'react-redux';
 import { useNavigate} from "react-router-dom";
-import { selectCocktailsIngridientData } from '../../rdx/selectors';
+import { selectCocktailsIngridientData } from '../../rdx/Cocktails/selectors';
 import {getLocalized} from '../../services/localized';
 
 

@@ -1,5 +1,5 @@
 import { createAsyncAction } from 'typesafe-actions';
-import {cocktailsResponse} from '../services/models';
+import {cocktailsResponse} from '../../services/models';
 import { ActionType } from 'typesafe-actions';
 
 interface CocktailsError {

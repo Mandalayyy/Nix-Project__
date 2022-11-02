@@ -1,6 +1,13 @@
 export interface cocktailsResponse {
-    drinks: [Array<cocktailsSearchResponse>, Array<cocktailIngridientSearch>,];
+    drinks: Array<cocktailsModel>
 }
+
+export interface cocktailsIngridientsResponse {
+    drinks: Array<cocktailsModel>
+}
+
+export type cocktailsModel = cocktailsSearchResponse & cocktailIngridientSearch ; 
+export type cocktailsIngridientsModel =  cocktailIngridientSearch; 
 
 export interface cocktailsSearchResponse {
     idDrink: string;
@@ -8,14 +15,10 @@ export interface cocktailsSearchResponse {
     strAlcoholic: string;
     strCategory: string;
     strGlass: string;
-    strDrinkThumb: string;
+    strDrinkThumb?: string;
 }
 
-export interface cocktailIngridientSearch {
-    idDrink: string;
-    strDrink: string;
-    strDrinkThumb: string;
-    strGlass: string;
+export interface cocktailIngridientSearch extends cocktailsSearchResponse {
     strIngredient1?: string;
     strIngredient2?: string;
     strIngredient3?: string;
@@ -32,6 +35,6 @@ export interface cocktailIngridientSearch {
     strIngredient14?: string;
     strIngredient15?: string;
     strInstructions: string;
-    strCategory: string;
-    strAlcoholic: string;
 }
+
+

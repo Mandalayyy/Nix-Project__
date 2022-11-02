@@ -1,11 +1,10 @@
 import { searchCocktails,searchCocktailIngridient } from "../services/cocktailsService";
-import {  cocktailsActions, getCocktailsASYNCActions, getCocktailsIngridientAsyncActions } from "./actions";
+import {  cocktailsActions, getCocktailsASYNCActions, getCocktailsIngridientAsyncActions } from "../rdx/Cocktails/actions";
 import { ThunkAction} from "redux-thunk";
-import { CocktailsState } from "./reducer";
-import { AnyAction } from "@reduxjs/toolkit";
+import { CocktailsState } from "./Cocktails/reducer";
 
 
-export const fetchSearchCocktails = (queryString: string): ThunkAction<Promise<void>, CocktailsState , undefined, AnyAction > => 
+export const fetchSearchCocktails = (queryString: string): ThunkAction<Promise<void>, CocktailsState , undefined, cocktailsActions > => 
   async (dispatch) => {
     try {
       dispatch(getCocktailsASYNCActions.request());
@@ -27,7 +26,6 @@ export const fetchSearchCocktailsIgridient = (queryString: string): ThunkAction<
       const response = await searchCocktailIngridient(queryString);
       if(response.success && response.response){
         dispatch(getCocktailsIngridientAsyncActions.success(response.response));
-        console.log('response', response.response);
       }else{
         dispatch(getCocktailsIngridientAsyncActions.failure({error : 'Something went Wrong!'}));
       }

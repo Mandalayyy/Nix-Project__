@@ -55,7 +55,7 @@ const localizedKeys: LocalizedObject = {
     cocktailsCategory: 'Категорія:',
     cocktailsInstructions: 'Інструкція:',
     cocktailsGlass: 'Стакан:',
-    cocktailsIngridients: 'Інгридієнти:',
+    cocktailsIngridients: 'Інгредієнти:',
     cocktailsInfo: 'Вид:',
     backHome: 'Повернутися',
   }

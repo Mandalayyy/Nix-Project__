@@ -2,12 +2,15 @@ import React,{useCallback, useEffect, useState} from 'react';
 import { useNavigate, useSearchParams } from "react-router-dom";
 import NightlightRoundIcon from '@mui/icons-material/NightlightRound';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import MenuIcon from '@mui/icons-material/Menu';
 import { orange, yellow } from '@mui/material/colors';
 
 
 export const NavBar = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const routes = document.getElementById('routes');
   const [menu, setMenu] = useState(false);
+  const [bMenu, setBMenu] = useState(false);
   const login = localStorage.getItem('login') || 'false';
   const userTheme = localStorage.getItem('theme');
   const [themeMod, setThemeMod] = useState('light');
@@ -32,13 +35,28 @@ export const NavBar = () => {
     }
   },[userTheme]);
 
+  const openBMenu = useCallback(() => {
+    if(bMenu){
+      setBMenu(false);
+      if(routes){
+        routes.classList.remove('pl-[250px]','duration-150', 'ease-in-out')
+      }
+      
+    }else{
+      setBMenu(true);
+      if(routes){
+        routes.classList.add('pl-[250px]','duration-150','ease-in-out')
+      }
+    }
+  },[bMenu, setBMenu, routes]);
+
   const openMenu = useCallback(() => {
     if(menu){
       setMenu(false);
     }else{
       setMenu(true);
     }
-  },[menu, setMenu]);
+  },[menu, setMenu,]);
 
   const logout = useCallback(() => {
     localStorage.setItem('login', JSON.stringify('false'));
@@ -66,14 +84,25 @@ export const NavBar = () => {
       document.documentElement.classList.remove('dark');
     }
   },[themeMod, setThemeMod]);
+
+  const goToOwnCocktails = useCallback(() => {
+    navigate('ownCocktails');
+  },[navigate]);
   
   if(login === 'false'){
     navigate('/register');
   }
 
   return (
-    <div className='flex h-10 bg-[#6200ee] justify-between px-5 shadow-md items-center dark:bg-[#222222] dark:shadow-none'>
+    <div className='flex h-10 w-screen bg-[#6200ee] justify-between px-10 shadow-md items-center dark:bg-[#222222] dark:shadow-none'>
       <div className='flex'>
+        <div className='flex'>
+          <button onClick={openBMenu}><MenuIcon /></button>
+        </div>
+        {bMenu? <div className='flex w-[250px] h-[250px] flex-col absolute top-10 left-0 bg-slate-500 '>
+          <button>Profile</button>
+          <button onClick={goToOwnCocktails}>OwnCocktails</button>
+        </div>: null}
         <div>
           <button onClick={goHome} className='dark:text-white'>CocktailsDB</button>
         </div>

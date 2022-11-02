@@ -1,0 +1,2 @@
+export const SHOW_MODAL_FORM = 'SHOW_MODAL_FORM';
+export const HIDE_MODAL_FORM = 'HIDE_MODAL_FORM';
