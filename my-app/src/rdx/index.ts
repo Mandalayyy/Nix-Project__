@@ -1,17 +1,15 @@
 import {  combineReducers, configureStore, Store } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import hardSet from 'redux-persist/lib/stateReconciler/hardSet'
+import hardSet from 'redux-persist/lib/stateReconciler/hardSet';
 import thunk from 'redux-thunk';
 import { cocktailsActions } from '../rdx/Cocktails/actions';
 import {CocktailsState, reducer as cocktailsReducer} from './Cocktails/reducer';
 import {OwnCocktailsState, reducer as ownCocktailsReducer} from './OwnCocktails/reducer';
-import {ModalFormState, reducer as modalFormReducer} from '../rdx/ModalForm/reducer';
 
 export interface RootState {
   cocktails: CocktailsState;
-  ownCocktails:  OwnCocktailsState;
-  modalForm: ModalFormState;
+  ownCocktails:  OwnCocktailsState
 }
 
 const persistConfig = {
@@ -23,7 +21,6 @@ const persistConfig = {
 const rootReducer = combineReducers({
   cocktails:  cocktailsReducer,
   ownCocktails: ownCocktailsReducer,
-  modalForm:  modalFormReducer,
 });
 
 const persistedReducer = persistReducer<RootState>(persistConfig, rootReducer);

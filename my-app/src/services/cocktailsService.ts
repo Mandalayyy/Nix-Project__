@@ -15,10 +15,8 @@ export interface APIRequest {
 export const perfomRequest = async ({path}: APIRequest): Promise<APIResponse<cocktailsResponse | cocktailsIngridientsResponse>> => {
   try{
     const response = await fetch(path);
-    console.log('search', path);
     if(response.ok){
       const responseJson = await response.json();
-      console.log(responseJson, 'response');
       return {success: true,response: responseJson};
 
     }

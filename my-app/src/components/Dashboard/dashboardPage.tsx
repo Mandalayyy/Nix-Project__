@@ -15,16 +15,16 @@ export const DashboardPage = () => {
     <Router>
       <NavBar />
       <div id="routes" className="font-font bg-gray-100 flex flex-wrap justify-center dark:bg-[#121212]">
-      <Routes>
-        <Route path='profile' element={< ProfilePage />} />
-        <Route path='register' element={<RegisterPage />}/>
-        <Route path='login' element={<LoginPage />} />
-        <Route path='/' element={<CocktailsListPage />} />
-        <Route path='cocktail/:id' element={<CocktailIngridient />} />
-        <Route path="ownCocktails" element={<OwnCocktailsList/>}>
-          <Route path="modalForm" element={<ModalForm/>}/>
-        </Route>
-      </Routes>
+        <Routes>
+          <Route path='profile' element={< ProfilePage />} />
+          <Route path='register' element={<RegisterPage />}/>
+          <Route path='login' element={<LoginPage />} />
+          <Route path='/' element={<CocktailsListPage />} />
+          <Route path='cocktail/:id' element={<CocktailIngridient />} />
+          <Route path="ownCocktails" element={<OwnCocktailsList/>}>
+            <Route path="modalForm" element={<ModalForm/>}/>
+          </Route>
+        </Routes>
       </div>
       
       

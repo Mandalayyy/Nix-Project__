@@ -34,7 +34,7 @@ export const ModalForm = () => {
 
   const onSaveClick = useCallback(() => {
     dispatch(createOwnCocktail({
-    idDrink,
+      idDrink,
       strDrink,
       strAlcoholic,
       strCategory,

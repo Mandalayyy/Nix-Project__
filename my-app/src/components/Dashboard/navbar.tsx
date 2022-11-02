@@ -39,13 +39,13 @@ export const NavBar = () => {
     if(bMenu){
       setBMenu(false);
       if(routes){
-        routes.classList.remove('pl-[250px]','duration-150', 'ease-in-out')
+        routes.classList.remove('pl-[250px]','duration-150', 'ease-in-out');
       }
       
     }else{
       setBMenu(true);
       if(routes){
-        routes.classList.add('pl-[250px]','duration-150','ease-in-out')
+        routes.classList.add('pl-[250px]','duration-150','ease-in-out');
       }
     }
   },[bMenu, setBMenu, routes]);

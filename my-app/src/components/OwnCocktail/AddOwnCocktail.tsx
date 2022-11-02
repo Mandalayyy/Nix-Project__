@@ -6,17 +6,17 @@ import { getItemId } from '../../rdx/OwnCocktails/actions';
 
 
 export const AddOwnCocktail = () =>{
-    const dispatch = useAppDispatch()
-    const navigate = useNavigate()
-    const onButtonClick = useCallback(() => {
-        dispatch(getItemId(null));
-       navigate('modalForm');
-    },[dispatch])
-    return(
-        <div>
-            <button onClick={onButtonClick}>
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const onButtonClick = useCallback(() => {
+    dispatch(getItemId(null));
+    navigate('modalForm');
+  },[dispatch]);
+  return(
+    <div>
+      <button onClick={onButtonClick}>
                 Add
-            </button>
-        </div>
-    )
-}
+      </button>
+    </div>
+  );
+};

@@ -1,4 +1,4 @@
-import {cocktailsIngridientsModel, cocktailsModel} from '../../services/models';
+import {cocktailsModel} from '../../services/models';
 import {cocktailsActions, COCKTAILS_ACTIONS, COCKTAILS_INGRIDIENT_ACTIONS} from './actions';
 
 

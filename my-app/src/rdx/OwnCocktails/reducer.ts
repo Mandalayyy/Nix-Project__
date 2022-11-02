@@ -1,8 +1,7 @@
-import { AnyAction } from "redux";
 import * as Actions from './actions';
 import { cocktailsModel } from "../../services/models";
 import { ActionType, getType } from "typesafe-actions";
-import { CREATE_OWN_COCKTAIL } from "./actions-type";
+
 
 
 export type OwnCocktailsActions = ActionType<typeof Actions>;
