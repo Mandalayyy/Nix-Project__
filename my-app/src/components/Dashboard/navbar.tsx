@@ -4,6 +4,7 @@ import NightlightRoundIcon from '@mui/icons-material/NightlightRound';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import MenuIcon from '@mui/icons-material/Menu';
 import { orange, yellow } from '@mui/material/colors';
+import {DebounceInput} from 'react-debounce-input';
 
 
 export const NavBar = () => {
@@ -96,18 +97,22 @@ export const NavBar = () => {
   return (
     <div className='flex h-10 w-screen bg-[#6200ee] justify-between px-10 shadow-md items-center dark:bg-[#222222] dark:shadow-none'>
       <div className='flex'>
-        <div className='flex'>
-          <button onClick={openBMenu}><MenuIcon /></button>
+        <div className='flex mr-5'>
+          <button onClick={openBMenu}><MenuIcon className='dark:text-white' /></button>
         </div>
-        {bMenu? <div className='flex w-[250px] h-[250px] flex-col absolute top-10 left-0 bg-slate-500 '>
-          <button>Profile</button>
-          <button onClick={goToOwnCocktails}>OwnCocktails</button>
+        {bMenu? <div className='flex w-[250px] h-[250px] items-start  flex-col absolute top-10 left-0 dark dark:bg-[#222222] shadow-md rounded-br dark:text-white'>
+          <button className='p-5 '>Profile</button>
+          <button className='p-5 ' onClick={goToOwnCocktails}>OwnCocktails</button>
         </div>: null}
         <div>
           <button onClick={goHome} className='dark:text-white'>CocktailsDB</button>
         </div>
         <div>
-          <input type="text" className='ml-5 rounded-lg' onChange={(e) => getSearchParams(e.target.value)} />
+          <DebounceInput 
+            debounceTimeout={300}
+            onChange={(e) => getSearchParams(e.target.value)}
+            className='ml-5 rounded-lg'
+          />
         </div>
       </div>
       <div className='flex space-x-6'>

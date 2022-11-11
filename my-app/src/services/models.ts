@@ -1,13 +1,18 @@
 export interface cocktailsResponse {
-    drinks: Array<cocktailsModel>
+    drinks: Array<cocktailsSearchResponse>
 }
 
 export interface cocktailsIngridientsResponse {
-    drinks: Array<cocktailsModel>
+    drinks: Array<cocktailIngridientSearch>
 }
 
-export type cocktailsModel = cocktailsSearchResponse & cocktailIngridientSearch ; 
-export type cocktailsIngridientsModel =  cocktailIngridientSearch; 
+export interface cocktailIngridientSearchList {
+    drinks: Array<allIngridientsList>
+}
+
+export interface allIngridientsList {
+    strIngredient1: string;
+}
 
 export interface cocktailsSearchResponse {
     idDrink: string;

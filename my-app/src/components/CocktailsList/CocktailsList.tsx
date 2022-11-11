@@ -1,14 +1,13 @@
 import React,{useEffect, useState} from "react";
 import {  useSelector } from "react-redux";
-import { fetchSearchCocktails } from "../../rdx/thunk";
+import { fetchIgridientsList, fetchSearchCocktails } from "../../rdx/thunk";
 import { selectCocktailsData } from "../../rdx/Cocktails/selectors";
 import { CocktailItemPage } from "./CocktailsItem";
 import { CircularProgress, Typography} from '@mui/material';
 import { selectIsDataLoading } from "../../rdx/Cocktails/selectors";
-
 import './cocktails.css';
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useAppDispatch } from "../../rdx/hooks";
+import  { useAppDispatch} from "../../rdx/hooks";
 import { getLocalized } from "../../services/localized";
 
 export const CocktailsListPage = () => {
@@ -17,11 +16,13 @@ export const CocktailsListPage = () => {
   const isListLoading = useSelector(selectIsDataLoading);
   const [searchParams, setSearchParams] = useSearchParams();
   const [login, setLogin] = useState(localStorage.getItem('login')|| 'false');
-  
+  console.log('data',data)
   const dispatch = useAppDispatch();
-  const searchValue = searchParams.get('sort');
+  const searchValue = searchParams.get('sort')|| '';  
+  
   useEffect(() =>{
-    dispatch(fetchSearchCocktails(searchValue || ''));
+    dispatch(fetchSearchCocktails(searchValue));
+    dispatch(fetchIgridientsList());
     if(login != 'true'){
       navigate('/register');
     }
@@ -38,8 +39,10 @@ export const CocktailsListPage = () => {
     return <CircularProgress color="secondary" />;
   }
   return(
-    <div className="bg-gray-100 flex flex-wrap justify-center dark:bg-[#121212] ">
-      {data.map((item) => <CocktailItemPage   key={item.idDrink} item={item} />)}
+    <div className="bg-gray-100  dark:bg-[#121212] ">
+      <div className="flex flex-wrap gap-5 justify-center pt-5">
+        {data.map((item) => <CocktailItemPage   key={item.idDrink} item={item} />)}
+      </div>
     </div>
   );
 };

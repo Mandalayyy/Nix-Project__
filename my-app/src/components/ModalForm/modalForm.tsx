@@ -21,7 +21,7 @@ export const ModalForm = () => {
     }
     return data.find(e => e.idDrink === itemId);
         
-  },[]);
+  },[data, itemId]);
     
   const [strDrink, setStrDrink] = useState(element? element.strDrink: '');
   const [strAlcoholic, setStrAlcoholic] = useState(element? element.strAlcoholic: '');
@@ -47,18 +47,23 @@ export const ModalForm = () => {
 
 
   return(
-    <div>
-      <div className='flex flex-col space-y-3'>
-        <input type="text" value={strDrink} onChange={(e) => setStrDrink(e.target.value)}/>
-        <input type="text" value={strAlcoholic} onChange={(e) => setStrAlcoholic(e.target.value)}/>
-        <input type="text" value={strCategory} onChange={(e) => setStrCategory(e.target.value)}/>
-        <input type="text" value={strGlass} onChange={(e) => setStrGlass(e.target.value)}/>
-        <input type="text" value={strInstructions} onChange={(e) => setStrInstructions(e.target.value)}/>
-        <input type="text" value={strIngredient1} onChange={(e) => setStrIngredient1(e.target.value)}/>
+    <div className=' flex flex-col justify-center w-screen items-center h-screen justify-center absolute'>
+      <div className='w-[400px] h-[400px] p-4 bg-[#6200ee] dark:bg-[#1e1e1e] ' >
+      <div className='flex flex-col space-y-3 '>
+        <input type="text" placeholder='Name' className='p-2' value={strDrink} onChange={(e) => setStrDrink(e.target.value)}/>
+        <input type="text" placeholder='Type' className='p-2' value={strAlcoholic} onChange={(e) => setStrAlcoholic(e.target.value)}/>
+        <input type="text" placeholder='Category' className='p-2' value={strCategory} onChange={(e) => setStrCategory(e.target.value)}/>
+        <input type="text" placeholder='Glass' className='p-2' value={strGlass} onChange={(e) => setStrGlass(e.target.value)}/>
+        <input type="text" placeholder='Instructions' className='p-2' value={strInstructions} onChange={(e) => setStrInstructions(e.target.value)}/>
+        <input type="text" placeholder='Ingridient 1' className='p-2' value={strIngredient1} onChange={(e) => setStrIngredient1(e.target.value)}/>
         
       </div>
-      <button onClick={onCloseClick}>Close</button>
-      <button onClick={onSaveClick}>save</button>
+      <div className='flex justify-evenly mt-4'>
+        <button className='rounded-lg text-black uppercase bg-blue-500 py-1 px-3 transition ease-in-out delay-120 bg-blue-500 hover: hover:scale-105 hover:bg-indigo-500 duration-500' onClick={onCloseClick}>Close</button>
+        <button className='rounded-lg text-black uppercase bg-blue-500 py-1 px-3 transition ease-in-out delay-120 bg-blue-500 hover: hover:scale-105 hover:bg-indigo-500 duration-500' onClick={onSaveClick}>save</button>
+      </div>
+      </div>
+      
     </div>
             
   );

@@ -1,16 +1,26 @@
 import React, { useCallback } from 'react';
 import {  useSelector } from 'react-redux';
 import { useNavigate} from "react-router-dom";
+import { getItemName } from '../../rdx/Cocktails/actions';
 import { selectCocktailsIngridientData } from '../../rdx/Cocktails/selectors';
+import { useAppDispatch } from '../../rdx/hooks';
 import {getLocalized} from '../../services/localized';
 
 
 export const CocktailIngridient = () => {
   const data = useSelector(selectCocktailsIngridientData);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const imgSize = '-Small.png';
+  const baseImgURL = 'https://www.thecocktaildb.com/images/ingredients/';
   const goHome = useCallback(() => {
     navigate('/');
   },[navigate]);
+  const ingridientClick = useCallback((ingr:string) => {
+    dispatch(getItemName(ingr));
+    navigate(`/ing/${ingr}`);
+
+  },[]);
   return(
     <div className='dark:bg-[#121212] h-screen dark:text-white'>
       <div className='flex flex-col items-center '>
@@ -45,21 +55,68 @@ export const CocktailIngridient = () => {
                   </div>
                   <div>
                     <span className='bg-blue-200 px-2 py-1 text-green-900'>{getLocalized('cocktailsIngridients')}</span>
-                    <ul className='pl-14 list-disc'>
+                    <ul className='flex gap-3 mt-3'>
                     
-                      {item.strIngredient1? <li>{item.strIngredient1}</li> : null}
-                      {item.strIngredient2? <li>{item.strIngredient2}</li> : null}
-                      {item.strIngredient3? <li>{item.strIngredient3}</li> : null}
-                      {item.strIngredient4? <li>{item.strIngredient4}</li> : null}
-                      {item.strIngredient5? <li>{item.strIngredient5}</li> : null}
-                      {item.strIngredient6? <li>{item.strIngredient6}</li> : null}
-                      {item.strIngredient7? <li>{item.strIngredient7}</li> : null}
-                      {item.strIngredient8? <li>{item.strIngredient8}</li> : null}
-                      {item.strIngredient9? <li>{item.strIngredient9}</li> : null}
-                      {item.strIngredient10? <li>{item.strIngredient10}</li> : null}
-                      {item.strIngredient11? <li>{item.strIngredient11}</li> : null}
-                      {item.strIngredient12? <li>{item.strIngredient12}</li> : null}
-                
+                      <button onClick={() => ingridientClick(item.strIngredient1 || '')}>{item.strIngredient1? 
+                        <li>
+                          <img src={[baseImgURL,item.strIngredient1,imgSize].join('')} alt="" />
+                          {item.strIngredient1}
+                        </li> : null}</button>
+                      <button onClick={() => ingridientClick(item.strIngredient2 || '')}>{item.strIngredient2? 
+                        <li>
+                          <img src={[baseImgURL,item.strIngredient2,imgSize].join('')} alt="" />
+                          {item.strIngredient2}
+                        </li> : null}</button>
+                      <button onClick={() => ingridientClick(item.strIngredient3 || '')}>{item.strIngredient3? 
+                        <li>
+                          <img src={[baseImgURL,item.strIngredient3,imgSize].join('')} alt="" />
+                          {item.strIngredient3}
+                        </li> : null}</button>
+                      <button onClick={() => ingridientClick(item.strIngredient4 || '')}>{item.strIngredient4? 
+                        <li>
+                          <img src={[baseImgURL,item.strIngredient4,imgSize].join('')} alt="" />
+                          {item.strIngredient4}
+                        </li> : null}</button>
+                      <button onClick={() => ingridientClick(item.strIngredient5 || '')}>{item.strIngredient5? 
+                        <li>
+                          <img src={[baseImgURL,item.strIngredient5,imgSize].join('')} alt="" />
+                          {item.strIngredient5}
+                        </li> : null}</button>
+                      <button onClick={() => ingridientClick(item.strIngredient6 || '')}>{item.strIngredient6? 
+                        <li>
+                          <img src={[baseImgURL,item.strIngredient6,imgSize].join('')} alt="" />
+                          {item.strIngredient6}
+                        </li> : null}</button>
+                      <button onClick={() => ingridientClick(item.strIngredient7 || '')}>{item.strIngredient7? 
+                        <li>
+                          <img src={[baseImgURL,item.strIngredient7,imgSize].join('')} alt="" />
+                          {item.strIngredient7}
+                        </li> : null}</button>
+                      <button onClick={() => ingridientClick(item.strIngredient8 || '')}>{item.strIngredient8? 
+                        <li>
+                          <img src={[baseImgURL,item.strIngredient8,imgSize].join('')} alt="" />
+                          {item.strIngredient8}
+                        </li> : null}</button>
+                      <button onClick={() => ingridientClick(item.strIngredient9 || '')}>{item.strIngredient9? 
+                        <li>
+                          <img src={[baseImgURL,item.strIngredient9,imgSize].join('')} alt="" />
+                          {item.strIngredient9}
+                        </li> : null}</button>
+                      <button onClick={() => ingridientClick(item.strIngredient10 || '')}>{item.strIngredient10? 
+                        <li>
+                          <img src={[baseImgURL,item.strIngredient10,imgSize].join('')} alt="" />
+                          {item.strIngredient10}
+                        </li> : null}</button>
+                      <button onClick={() => ingridientClick(item.strIngredient11 || '')}>{item.strIngredient11? 
+                        <li>
+                          <img src={[baseImgURL,item.strIngredient11,imgSize].join('')} alt="" />
+                          {item.strIngredient11}
+                        </li> : null}</button>
+                      <button onClick={() => ingridientClick(item.strIngredient12 || '')}>{item.strIngredient12? 
+                        <li>
+                          <img src={[baseImgURL,item.strIngredient12,imgSize].join('')} alt="" />
+                          {item.strIngredient12}
+                        </li> : null}</button>
                     </ul>
                   </div>
                 

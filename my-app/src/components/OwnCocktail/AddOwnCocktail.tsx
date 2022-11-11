@@ -14,7 +14,7 @@ export const AddOwnCocktail = () =>{
   },[dispatch]);
   return(
     <div>
-      <button onClick={onButtonClick}>
+      <button className=' w-60 p-5 h-60 bg-gray-100 rounded shadow-md' onClick={onButtonClick}>
                 Add
       </button>
     </div>

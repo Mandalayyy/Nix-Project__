@@ -20,7 +20,7 @@ export const CocktailItemPage  = ({item}: CocktailItemPageProps)  => {
     navigate(`/cocktail/${item.idDrink}`);
   },[dispatch]);
   return( 
-    <div className='flex flex-col rounded-t-lg items-start m-5 shadow-md pb-4 gap-1 dark:bg-[#1e1e1e] dark:text-white box-border'>
+    <div className='flex flex-col rounded-t-lg items-start shadow-md pb-4 gap-1 dark:bg-[#1e1e1e] dark:text-white box-border'>
      
       <div ><img src={item.strDrinkThumb} className='rounded-t-lg' height='250px' width='250px' /></div>
       <div className='pl-3'>

@@ -5,7 +5,7 @@ import './App.css';
 
 const  App = () => {
   return (
-    <div className='h-screen w-screen font-font bg-gray-100 flex flex-wrap justify-center dark:bg-[#121212] ' id='theme'>
+    <div className='h-screen font-font bg-gray-100 dark:bg-[#121212] ' id='theme'>
       <DashboardPage />
     </div>
    

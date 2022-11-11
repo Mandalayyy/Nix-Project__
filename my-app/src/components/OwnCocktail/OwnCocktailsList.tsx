@@ -19,9 +19,11 @@ export const OwnCocktailsList = ( ) => {
     );
   }
   return(
-    <div className='flex w-screen space-x-9 pl-[140px] dark:bg-dark h-screen'>      
+    <div className='flex flex-col dark:bg-[#121212] w-screen'>  
+    <div className='flex flex-wrap gap-5 pt-5 px-[100px]'>
       {data.map((item) => <OwnCocktailItem  item={item} key={item.idDrink}/>)}
       <AddOwnCocktail />
+      </div>    
       <Outlet/>
     </div>
   );
