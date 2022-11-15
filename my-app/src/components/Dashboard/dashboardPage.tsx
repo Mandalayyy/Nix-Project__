@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { CocktailsListPage } from "../CocktailsList/CocktailsList";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { NavBar } from "./navbar";
@@ -11,28 +11,57 @@ import { ModalForm } from "../ModalForm/modalForm";
 import { AllIngridientsPage } from "../CocktailsList/AllIngridietns";
 import { Footer } from "./footer";
 
+const routes = [
+  {
+    path: 'profile',
+    Component: ProfilePage,
+  },
+  {path: 'register',
+  Component: RegisterPage,
+ },
+ {
+  path: 'login',
+    Component: LoginPage,
+ },
+ {
+  path: '/',
+    Component: CocktailsListPage,
+ },
+ {
+  path: 'cocktail/:id',
+    Component: CocktailIngridient,
+ },
+ {
+  path: 'ing/:Name',
+    Component: AllIngridientsPage,
+ },
+ {
+  path: 'ownCocktails/modalForm',
+    Component: ModalForm,
+ },
+ {
+  path: 'ownCocktails',
+    Component: OwnCocktailsList,
+ },
+];
+
 export const DashboardPage = () => {
-  
+  const [login, setLogin] = useState(JSON.parse(localStorage.getItem('login') || 'false') || false);
+
   return (
-    <Router>
-      <NavBar />
-      <div id="routes" className="font-font min-h-screen bg-gray-100 flex flex-wrap justify-center pb-10 dark:bg-[#121212]">
-        <Routes>
-          <Route path='profile' element={< ProfilePage />} />
-          <Route path='register' element={<RegisterPage />}/>
-          <Route path='login' element={<LoginPage />} />
-          <Route path='/' element={<CocktailsListPage />} />
-          <Route path='cocktail/:id' element={<CocktailIngridient />} />
-          <Route path="ing/:Name" element={<AllIngridientsPage/>} />
-          <Route path='allIgr' element={<AllIngridientsPage/>} />
-          <Route path="ownCocktails" element={<OwnCocktailsList/>}>
-            <Route path="modalForm" element={<ModalForm/>}/>
-          </Route>
-        </Routes>
-      </div>
-      <Footer />
-      
-      
-    </Router>
+    <div>
+      <Router>
+        <NavBar />
+        <div id="routes" className="font-font min-h-screen bg-gray-100 flex flex-wrap justify-center pb-10 dark:bg-[#121212]">
+          <Routes>
+            ({routes.map(({path, Component}) => {
+              return <Route path={path} key={path} element={<Component/>} />;
+            })})
+          </Routes>
+        </div>
+        <Footer />
+      </Router>
+    </div>
+    
   );
 };

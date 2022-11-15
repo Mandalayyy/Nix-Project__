@@ -1,7 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState,useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const ProfilePage = () => {
   const [isItemsChanged, setItemsChanging] = useState(false);
+  const navigate = useNavigate();
+  const [login, setLogin] = useState(JSON.parse(localStorage.getItem('login') || 'false') || false);
   const [name, setName] = useState( JSON.parse(localStorage.getItem('name')|| ''));
   const [email, setEmail] = useState(JSON.parse(localStorage.getItem('email')|| ''));
   const [password, setPassword] = useState(JSON.parse(localStorage.getItem('password')|| ''));
@@ -13,12 +16,19 @@ export const ProfilePage = () => {
     localStorage.setItem('password', JSON.stringify(password));
     localStorage.setItem('phone', JSON.stringify(phone));
     localStorage.setItem('name', JSON.stringify(name));
-  },[name, phone, password, email]);
+    setItemsChanging(false);
+  },[name, phone, password, email,isItemsChanged]);
 
   const onCloseClick = useCallback(() => {
     setItemsChanging(false);
   },[isItemsChanged]);
 
+  useEffect(() => {
+    if(login != true){
+      navigate('/register');
+    }
+
+  },[navigate, login]);
   
   const changeItems = useCallback(() => {
     setItemsChanging(true);
@@ -27,7 +37,7 @@ export const ProfilePage = () => {
     <div className='h-screen dark:bg-[#121212] flex dark:text-white flex-col items-center pt-10  '>
       <div className='flex flex-col w-full mt-12 '>
         <div className='flex justify-center'>
-          <span >User:  </span>{name}
+          <span className='uppercase pr-4 pb-8' >User:  </span>{name}
         </div>
         <div className=' items-start ml-20 space-y-4'>
           <div className=' '> 

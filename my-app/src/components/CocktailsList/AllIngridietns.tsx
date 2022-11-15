@@ -13,6 +13,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export const AllIngridientsPage = () => {
   const cou = localStorage.getItem('ingCount');
+  const [login, setLogin] = useState(JSON.parse(localStorage.getItem('login') || 'false') || false);
   const navigate = useNavigate();
   const ingrName = useSelector(selectCocktailsIngridientName);
   console.log('ing', ingrName);
@@ -68,9 +69,12 @@ export const AllIngridientsPage = () => {
   },[count, allData]);
 
   useEffect(() => {
+    if(login != true){
+      navigate('/register');
+    }
 
     dispatch( fetchCocktailsByIngridient(allData[count].strIngredient1));
-  },[dispatch, allData, count]);
+  },[dispatch, allData, count, login]);
 
   const ownCocktailClick = useCallback((id:string) => {
     dispatch(fetchSearchCocktailsIgridient(id));

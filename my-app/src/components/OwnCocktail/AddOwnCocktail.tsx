@@ -10,7 +10,7 @@ export const AddOwnCocktail = () =>{
   const navigate = useNavigate();
   const onButtonClick = useCallback(() => {
     dispatch(getItemId(null));
-    navigate('modalForm');
+    navigate('/ownCocktails/modalForm');
   },[dispatch]);
   return(
     <div>

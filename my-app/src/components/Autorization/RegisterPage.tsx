@@ -21,7 +21,7 @@ export const RegisterPage = () => {
       localStorage.setItem('name', JSON.stringify(name));
       navigate('/login');
     }
-  },[name, phone, password, email]);
+  },[name, phone, password, email, navigate]);
   const Loging = useCallback(() => {
     navigate('/login');
   },[navigate]);
@@ -40,7 +40,7 @@ export const RegisterPage = () => {
                 onChange={(event) => setName(event.target.value)}
               />
             </div>
-            <div className="form-group">
+            <div className="">
               <input
                 type="email"
                 className="ml-3 w-full p-2 rounded-md"
@@ -48,7 +48,7 @@ export const RegisterPage = () => {
                 onChange={(event) => setEmail(event.target.value)}
               />
             </div>
-            <div className="form-group">
+            <div className="">
               <input
                 type="password"
                 className="ml-3 w-full p-2 rounded-md"
@@ -56,7 +56,7 @@ export const RegisterPage = () => {
                 onChange={(event) => setPassword(event.target.value)}
               />
             </div>
-            <div className="form-group">
+            <div className=" ">
               <input
                 type="Phone"
                 className="ml-3 w-full p-2 rounded-md"

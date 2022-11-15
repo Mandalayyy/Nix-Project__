@@ -63,3 +63,19 @@ export const fetchSearchCocktailsIgridient = (queryString: string): ThunkAction<
       dispatch(getCocktailsByIngridient.failure({error : 'Something went Wrong!'}));
     }
   };
+
+  export const fetchSearchCocktailsByFirstLetter = (queryString: string): ThunkAction<Promise<void>, CocktailsState , undefined, cocktailsActions > => 
+  async (dispatch) => {
+    try {
+      dispatch(getCocktailsASYNCActions.request());
+      const response = await searchCocktails(queryString);
+      if(response.success && response.response){
+        dispatch(getCocktailsASYNCActions.success(response.response));
+        console.log('res',response.response)
+      }else{
+        dispatch(getCocktailsASYNCActions.failure({error : 'Something went Wrong!'}));
+      }
+    }catch{
+      dispatch(getCocktailsASYNCActions.failure({error : 'Something went Wrong!'}));
+    }
+  };

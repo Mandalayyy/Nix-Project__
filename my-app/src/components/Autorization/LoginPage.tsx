@@ -24,7 +24,7 @@ export const LoginPage = () => {
     if(storageLogin && login){
       navigate('/');
     }
-  },[password, email, login]);
+  },[password, email, login, navigate]);
   return(
     <div className='flex justify-center h-screen items-center  dark:bg-[#121212]'>
       <div className='flex justify-center  rounded-md h-[400px] w-[400px] shadow-md bg-slate-100  dark:bg-[#1e1e1e] '>

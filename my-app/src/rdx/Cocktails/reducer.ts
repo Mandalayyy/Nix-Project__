@@ -26,8 +26,6 @@ const initialState: CocktailsState = {
 };
 
 export const reducer = (state: CocktailsState = initialState, action: cocktailsActions ) => {
-  console.log('state', state);
-  console.log('actions', action);
   switch(action.type){
   case COCKTAILS_ACTIONS.GET_COCKTAILS_REQUEST:
     return{
