@@ -1,4 +1,4 @@
-import { searchCocktails,searchCocktailIngridient, searchCocktailIngridientList, searchCocktailsByIngridient } from "../services/cocktailsService";
+import { searchCocktails,searchCocktailIngridient, searchCocktailIngridientList, searchCocktailsByIngridient, searchCocktailsByFirstLetter } from "../services/cocktailsService";
 import {  cocktailsActions, getCocktailsASYNCActions, getCocktailsByIngridient, getCocktailsIngridientAsyncActions, getIngredientsList } from "../rdx/Cocktails/actions";
 import { ThunkAction} from "redux-thunk";
 import { CocktailsState } from "./Cocktails/reducer";
@@ -68,10 +68,9 @@ export const fetchSearchCocktailsIgridient = (queryString: string): ThunkAction<
   async (dispatch) => {
     try {
       dispatch(getCocktailsASYNCActions.request());
-      const response = await searchCocktails(queryString);
+      const response = await searchCocktailsByFirstLetter(queryString);
       if(response.success && response.response){
         dispatch(getCocktailsASYNCActions.success(response.response));
-        console.log('res',response.response)
       }else{
         dispatch(getCocktailsASYNCActions.failure({error : 'Something went Wrong!'}));
       }

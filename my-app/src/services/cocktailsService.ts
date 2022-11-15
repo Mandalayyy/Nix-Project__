@@ -61,7 +61,7 @@ export const searchCocktailsByIngridient= async (queryString: string): Promise<A
 
 export const searchCocktailsByFirstLetter = async (queryString: string): Promise<APIResponse<cocktailsResponse>>  => {
   const response = await perfomRequest ({
-    path: [baseUrl,queryString].join(''),
+    path: [searchByFirstLetter,queryString].join(''),
   });
   return response;
 };
